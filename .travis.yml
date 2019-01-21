@@ -14,5 +14,6 @@ script:
   - pipenv run isort --check-only
   - find . -iname "*.py" | xargs pipenv run pylint
   - pipenv run coverage run tests.py
+  - pipenv run coverage xml
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
