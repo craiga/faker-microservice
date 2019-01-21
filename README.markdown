@@ -2,7 +2,7 @@
 
 Provider for Faker which adds fake microservice names.
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+[![Build Status](https://img.shields.io/travis/com/craiga/faker-microservice.svg)](https://travis-ci.com/craiga/faker-microservice)[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 # Installation
 
