@@ -13,7 +13,7 @@ script:
   - pipenv run black --check .
   - pipenv run isort --check-only
   - find . -iname "*.py" | xargs pipenv run pylint
-  - pipenv run coverage run tests.py
-  - pipenv run coverage xml
+  - pipenv run coverage run --source=faker_microservice tests.py
+  - pipenv run coverage report
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
