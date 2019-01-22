@@ -17,3 +17,11 @@ script:
   - pipenv run coverage xml
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+deploy:
+  provider: pypi
+  skip_existing: true
+  user: craiga
+  password:
+    secure: "d4WCVwW7Tip/14k1J+mxJWKDNvn9WGyt+awsF1SoixRPpficV4CzxSLghhNFIKDb5yU33jY29U4587klZHPmbmL7UDPEJO+NQvZWLuDey4Qx4eQMZsRwibV8jwJGd5B1FVk5Y7MzQLQQMAM9ALOo0fGOvmushjX9sYmlt6SXr0zu2MnHP/3Rgk47fTiUbg1uOrbi8gKUyIefbvC1d9mJ+8Ses3OXKKSd2wzqeWDcXbYe+RzD3zBbnt1fRufU1iPG9jfTEpY7C0gMJtkQtxqU8KomsBct+jlYVqTUfF2BSpg342LkORr5NpYr/74caPagNTK8oXEJR+HpOk/hfGhvs0DTdou2BIQbuUQnKuj7tvVUvoDsn67zeoB8VOrQ4uUUVU/5fGg2FJ34tI0s0WXRr1N88LYa8r0BggDZ1h1ZdwlICJMQKJM40GNwAPiyClNxwKpdrmeZZxMgrpdBQCQ87TKrzDfLWY1g475Bqlf0s2x6qf1qjqPekT9BMUaO+nPW5xcy8uxdwHBZ5uAJi3v/09PWYhIHMNMEBwLwUWdmJcnvYGGPTgllQDsDmQ9azkk3tx4h3cGB9IThMZ7GxdeuHSTEba2K2oh0UxNT/FNujv6CcnzXF0H3gN7buuq3BrA2V/hWJf38fXUlRgZ43zowD6CjxmyPmp/AB49GmbQa940="
+  on:
+    tags: true
