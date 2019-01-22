@@ -4,7 +4,7 @@ import unittest
 
 from faker import Faker
 
-from faker_microservice import MicroserviceProvider
+import faker_microservice
 
 
 class IntegrationTestCase(unittest.TestCase):
@@ -13,7 +13,7 @@ class IntegrationTestCase(unittest.TestCase):
     def test_integration(self):  # pylint: disable=no-self-use
         """Test integration with Faker."""
         fake = Faker()
-        fake.add_provider(MicroserviceProvider)
+        fake.add_provider(faker_microservice.Provider)
         fake.microservice()
 
 

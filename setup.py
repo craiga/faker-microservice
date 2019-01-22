@@ -6,7 +6,7 @@ with open("README.markdown", "r") as fh:
     long_description = fh.read()  # pylint: disable=invalid-name
 
 setuptools.setup(
-    name="faker_microservice",
+    name="faker-microservice",
     version="1.0.0",
     author="Craig Anderson",
     author_email="craiga@craiga.id.au",

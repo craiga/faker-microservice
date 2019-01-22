@@ -3,7 +3,7 @@
 import faker.providers
 
 
-class MicroserviceProvider(faker.providers.BaseProvider):
+class Provider(faker.providers.BaseProvider):
     """Provider for Faker which adds fake microservice names."""
 
     def microservice(self):

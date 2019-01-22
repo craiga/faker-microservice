@@ -10,10 +10,16 @@ Provider for [Faker](https://faker.readthedocs.io/) which adds fake microservice
 
 # Usage
 
+## Python
+
     from faker import Faker
 
-    from faker_microservice import MicroserviceProvider
+    import faker_microservice
 
     fake = Faker()
-    fake.add_provider(MicroserviceProvider)
+    fake.add_provider(faker_microservice.Provider)
     print(fake.microservice())  # prints "fulfilment_manager" or similar
+
+## Command Line
+
+    faker microservice -i faker_microservice
