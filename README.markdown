@@ -6,20 +6,26 @@ Provider for [Faker](https://faker.readthedocs.io/) which adds fake microservice
 
 # Installation
 
-    pip install faker-microservice
+```
+pip install faker-microservice
+```
 
 # Usage
 
 ## Python
 
-    from faker import Faker
+```python
+from faker import Faker
 
-    import faker_microservice
+import faker_microservice
 
-    fake = Faker()
-    fake.add_provider(faker_microservice.Provider)
-    print(fake.microservice())  # prints "fulfilment_manager" or similar
+fake = Faker()
+fake.add_provider(faker_microservice.Provider)
+print(fake.microservice())  # prints "fulfilment_manager" or similar
+```
 
 ## Command Line
 
-    faker microservice -i faker_microservice
+```
+faker microservice -i faker_microservice
+```
