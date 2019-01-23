@@ -51,14 +51,17 @@ class MicroserviceProviderTestCase(unittest.TestCase):
 
     def test_lists_in_order(self):
         """Test lists in root of module are in order."""
-        for attr_name in dir(faker_microservice):
+        for attr_name, attr in faker_microservice.__dict__.items():
             with self.subTest(attr_name=attr_name):
-                attr = getattr(faker_microservice, attr_name)
                 if isinstance(attr, list):
-                    prev_value = ""
-                    for this_value in attr:
-                        self.assertGreaterEqual(this_value, prev_value)
-                        prev_value = this_value
+                    self.assert_list_in_order(attr)
+
+    def assert_list_in_order(self, the_list):
+        """Assert a list is in order."""
+        prev_value = ""
+        for this_value in the_list:
+            self.assertGreaterEqual(this_value, prev_value)
+            prev_value = this_value
 
 
 if __name__ == "__main__":
