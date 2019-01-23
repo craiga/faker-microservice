@@ -16,6 +16,7 @@ SINGAULAR_NOUNS = [
     "help",
     "legacy",
     "login",
+    "monolith",
     "order",
     "payment",
     "print",
@@ -61,7 +62,7 @@ class Provider(faker.providers.BaseProvider):
     """Provider for Faker which adds fake microservice names."""
 
     def _microservice_simple(self):
-        """'Simple' microservice name (i.e. one without a suffix)"""
+        """Simple microservice name (i.e. one without a suffix)"""
         return self.random_element(SINGAULAR_NOUNS + PLURAL_NOUNS)
 
     def _microservice_with_delimiter_and_suffix(self):
