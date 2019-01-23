@@ -6,3 +6,6 @@ output-format = colorized
 
 [TYPECHECK]
 generated-members = microservice
+
+[DESIGN]
+max-complexity = 3
