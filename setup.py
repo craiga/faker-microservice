@@ -7,7 +7,7 @@ with open("README.markdown", "r") as fh:
 
 setuptools.setup(
     name="faker-microservice",
-    version="1.0.0",
+    version="1.0.1",
     author="Craig Anderson",
     author_email="craiga@craiga.id.au",
     description="Provider for Faker which adds fake microservice names.",
