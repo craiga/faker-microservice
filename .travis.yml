@@ -1,27 +1,28 @@
 language: python
 python:
-  - "3.6"
-  - "3.6-dev"
+- '3.6'
+- 3.6-dev
 install:
-  - pip install pipenv
-  - pipenv install --dev
+- pip install pipenv
+- pipenv install --dev
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - pipenv run black --check .
-  - pipenv run isort --check-only
-  - find . -iname "*.py" | xargs pipenv run pylint
-  - pipenv run coverage run --source=faker_microservice tests.py
-  - pipenv run coverage xml
+- pipenv run black --check .
+- pipenv run isort --check-only
+- find . -iname "*.py" | xargs pipenv run pylint
+- pipenv run coverage run --source=faker_microservice tests.py
+- pipenv run coverage xml
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 deploy:
   provider: pypi
-  skip_existing: true
   user: craiga
   password:
-    secure: "Xmr808uQuWoVcNPZ8dHUxAD1Ds9u69xbPLjRFi5yIQyU6fKdadaA/J1WUxT3oQvhuz8dIl/5f9+DtOg4EesZciZ0mbMW2epTMUbm0AH3GPod/eLUK34P0a831pcqq1UJMQNie7dLa0LLqUzMqTiyvh1ccEeU97kmS5nEHGjTOn04s6jyV5Hzn9PxgMt8987Wb7ZaQPWxN7BC6h4dc8y0kdhhhsQFjuDRFqzvOWhEe15L1kqiPV8U7lhtWU3i8YfnbAzzegdqiJQx7EsmULZ8nU2l4p1IHM8jmCrjkPlqERZdA0JRUZ3vzPeAqt3Kb+Z2hTVKW97xT9fIOKoVeFtO8vLbvgxvSCF2AG41Cnx81hOsa2aVDKmvy5dC1wM4tSGHtJwI30DYZweL1vJWIq2AD1q6wCdVwnJOdhl7fgEcbjqDKjtXhJqor3VHn/7MUh768L0FNUsI56oM+06GqRAVfaadudIKRuvFHgKSPBC9+R5GwNofkW/IqmQT5s6E+RutiGabawsGmxpHM38+5Hz+J7qg6a0O+dpEkoY68lTfpTlLSzae8YLGchqgD1Epo0TD1xKFZTGFP/s3CJis5KuHtMgN6Pr/dIJ05nNaCKDhFM6bxCslrk99ZnvRj6lKTXe9oOxv9QwgQdWjK85LD1kzui5YWHgtCHtmovXH8X2c+R0="
+    secure: CQRlrLRLv1FfDmMZzfTFIGQo+iJh/kW7LAcdPVyBDJsVykt8QESZ0u3VYXws10lzqEOnXbkfGmSAuPmfM+cYqoe6ztgnLovR/mUkR5S+7G+689cBDT2b2VmR3uPHN5wkNEkAWVRUmSbi+v6NTz57oJa02AISHa6z1QtAdfchUvtKe2iDAoY8rNkLZOMo+R6kO85f4BJEOiwZu4t2NCvBywVC+G2SLs4awWje7UhR+KmRWrHHVHFHZ8CE54ApG9Zf5C+rBNcNIu+T7U74bOt0YmVT1EUe+iozrFDoTpB0e23MNFS0yXqKZ7qFqNjUfTp2YfqWGRa4znlWJO0ly0no9UbX9QuTAIs2iPHrlliFJjs/gNoAlowKnn7TRpwfQFXsTL/EkOMeXtmrsdGXzAOmc8yFPeMlB/n9s4/4ODOlS85oMXddhgdvVThygc7hZslLmuEv1yrOrwlb4bQ7DtRdnBCOR2656pR9h0HDLZYQQUJuOF/YI8oyjeOdnjnRx04uHeswXwT6vj9w1X9dhym4WVaI2d124BFgbFz0RdWc1UYiE3f+asErjgFrJuQd073N3JoUZ57FBkRXvlTs690loXQSJ6ob9pXf1xotxgzx7vbkd4m0AHFX8+NeSxeGuMAiUbDQfZXM241XB/hUBt2MjxmBgVLthNbHP04cWRYdSd4=
+  skip_existing: true
   on:
     tags: true
