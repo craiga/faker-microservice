@@ -1,19 +1,13 @@
 language: python
 dist: xenial
 python:
-- '3.6'
-- '2.6'
-- '2.7'
-- '3.3'
-- '3.4'
 - '3.5'
 - 3.5-dev
+- '3.6'
 - 3.6-dev
 - '3.7'
 - 3.7-dev
 - nightly
-- pypy
-- pypy3
 install:
 - pip install pipenv
 - pipenv install --dev
