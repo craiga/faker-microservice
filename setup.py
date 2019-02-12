@@ -6,11 +6,15 @@ try:
     with open("README.markdown", "r") as fh:
         long_description = fh.read()  # pylint: disable=invalid-name
 except FileNotFoundError:
-    pass
+    # pylint: disable=invalid-name
+    long_description = (
+        "Provider for [Faker](https://faker.readthedocs.io/) which adds fake "
+        "microservice names."
+    )
 
 setuptools.setup(
     name="faker-microservice",
-    version="1.0.2",
+    version="1.0.3",
     author="Craig Anderson",
     author_email="craiga@craiga.id.au",
     description="Provider for Faker which adds fake microservice names.",
