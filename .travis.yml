@@ -16,6 +16,7 @@ script:
 - find . -iname "*.py" | xargs pipenv run pylint
 - pipenv run coverage run --source=faker_microservice tests.py
 - pipenv run coverage xml
+- pip install faker-microservice
 after_script:
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 deploy:
