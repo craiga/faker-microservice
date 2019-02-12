@@ -2,8 +2,11 @@
 
 import setuptools
 
-with open("README.markdown", "r") as fh:
-    long_description = fh.read()  # pylint: disable=invalid-name
+try:
+    with open("README.markdown", "r") as fh:
+        long_description = fh.read()  # pylint: disable=invalid-name
+except FileNotFoundError:
+    pass
 
 setuptools.setup(
     name="faker-microservice",
