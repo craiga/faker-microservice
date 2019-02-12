@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="faker-microservice",
-    version="1.0.1",
+    version="1.0.2",
     author="Craig Anderson",
     author_email="craiga@craiga.id.au",
     description="Provider for Faker which adds fake microservice names.",
