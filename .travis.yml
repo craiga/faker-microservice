@@ -1,7 +1,13 @@
 language: python
+dist: xenial
 python:
+- '3.5'
+- 3.5-dev
 - '3.6'
 - 3.6-dev
+- '3.7'
+- 3.7-dev
+- nightly
 env:
 - PIPENV_IGNORE_VIRTUALENVS=1
 install:
@@ -13,7 +19,7 @@ before_script:
 - chmod +x ./cc-test-reporter
 - "./cc-test-reporter before-build"
 script:
-- pipenv run black --check .
+- if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then pipenv install --pre black && pipenv run black --check .; fi
 - pipenv run isort --check-only
 - find . -iname "*.py" | xargs pipenv run pylint
 - pipenv run coverage run --source=faker_microservice tests.py
