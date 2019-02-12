@@ -2,6 +2,8 @@ language: python
 python:
 - '3.6'
 - 3.6-dev
+env:
+- PIPENV_IGNORE_VIRTUALENVS=1
 install:
 - pip install pipenv
 - pipenv install --dev
