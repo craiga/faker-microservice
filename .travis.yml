@@ -8,6 +8,8 @@ python:
 - '3.7'
 - 3.7-dev
 - nightly
+env:
+- PIPENV_IGNORE_VIRTUALENVS=1
 install:
 - pip install pipenv
 - pipenv install --dev
@@ -22,6 +24,7 @@ script:
 - find . -iname "*.py" | xargs pipenv run pylint
 - pipenv run coverage run --source=faker_microservice tests.py
 - pipenv run coverage xml
+- pip install faker-microservice
 after_script:
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 deploy:
