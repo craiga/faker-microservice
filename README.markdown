@@ -7,7 +7,7 @@ Provider for [Faker](https://faker.readthedocs.io/) which adds fake microservice
 # Installation
 
 ```
-pip install faker-microservice
+pipenv install faker-microservice
 ```
 
 # Usage
@@ -27,5 +27,5 @@ print(fake.microservice())  # prints "fulfilment_manager" or similar
 ## Command Line
 
 ```
-faker microservice -i faker_microservice
+pipenv run faker microservice -i faker_microservice
 ```
