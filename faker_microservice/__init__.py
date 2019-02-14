@@ -2,7 +2,7 @@
 
 import faker.providers
 
-SINGAULAR_NOUNS = [
+SINGULAR_NOUNS = [
     "auth",
     "authentication",
     "authorisation",
@@ -63,13 +63,13 @@ class Provider(faker.providers.BaseProvider):
 
     def _microservice_simple(self):
         """Simple microservice name (i.e. one without a suffix)"""
-        return self.random_element(SINGAULAR_NOUNS + PLURAL_NOUNS)
+        return self.random_element(SINGULAR_NOUNS + PLURAL_NOUNS)
 
     def _microservice_with_delimiter_and_suffix(self):
         """Microservice name with delimiter and suffix."""
         return "".join(
             [
-                self.random_element(SINGAULAR_NOUNS),
+                self.random_element(SINGULAR_NOUNS),
                 self.random_element(DELIMITERS),
                 self.random_element(SUFFIXES),
             ]
