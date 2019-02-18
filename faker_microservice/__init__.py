@@ -1,5 +1,7 @@
 """Provider for Faker which adds fake microservice names."""
 
+import random
+
 import faker.providers
 
 SINGAULAR_NOUNS = [
@@ -75,6 +77,9 @@ PLURAL_NOUNS = [
 
 DELIMITERS = ["", "-", "_"]
 
+PREFIXES = ["legacy", "new", "old"]
+
+
 SUFFIXES = [
     "adapter",
     "adaptor",
@@ -95,27 +100,37 @@ SUFFIXES = [
 class Provider(faker.providers.BaseProvider):
     """Provider for Faker which adds fake microservice names."""
 
-    def _microservice_simple(self):
-        """Simple microservice name (i.e. one without a suffix)"""
-        return self.random_element(SINGAULAR_NOUNS + PLURAL_NOUNS)
-
-    def _microservice_with_delimiter_and_suffix(self):
-        """Microservice name with delimiter and suffix."""
-        return "".join(
-            [
-                self.random_element(SINGAULAR_NOUNS),
-                self.random_element(DELIMITERS),
-                self.random_element(SUFFIXES),
-            ]
-        )
-
     def microservice(self):
         """Fake microservice names."""
-        return "".join(
-            self.random_element(
-                [
-                    self._microservice_simple(),
-                    self._microservice_with_delimiter_and_suffix(),
-                ]
-            )
-        )
+        delimiter = self.random_element(DELIMITERS)
+        prefix = self.random_element(PREFIXES)
+        suffix = self.random_element(SUFFIXES)
+        noun = self.random_element(SINGAULAR_NOUNS + PLURAL_NOUNS)
+        singular_noun = self.random_element(SINGAULAR_NOUNS)
+
+        delimiters_weight = 1
+        prefixes_weight = 1
+        suffixes_weight = len(SUFFIXES)
+        nouns_weight = len(SINGAULAR_NOUNS + PLURAL_NOUNS)
+        singular_nouns_weight = len(SINGAULAR_NOUNS)
+
+        choices = [
+            noun,
+            "".join([singular_noun, delimiter, suffix]),
+            "".join([prefix, delimiter, singular_noun]),
+            "".join([prefix, delimiter, singular_noun, delimiter, suffix]),
+        ]
+        weights = [
+            nouns_weight,
+            singular_nouns_weight * delimiters_weight * suffixes_weight,
+            prefixes_weight * delimiters_weight * singular_nouns_weight,
+            prefixes_weight
+            * delimiters_weight
+            * singular_nouns_weight
+            * delimiters_weight
+            * suffixes_weight,
+        ]
+
+        names = random.choices(choices, weights=weights, k=1)
+
+        return names[0]
