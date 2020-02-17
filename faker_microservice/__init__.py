@@ -4,7 +4,7 @@ import random
 
 import faker.providers
 
-SINGAULAR_NOUNS = [
+SINGULAR_NOUNS = [
     "aurora",
     "auth",
     "authentication",
@@ -84,10 +84,15 @@ SUFFIXES = [
     "adapter",
     "adaptor",
     "api",
+    "backend",
+    "be",
     "bridge",
+    "dashboard",
     "data",
     "database",
     "db",
+    "fe",
+    "frontend",
     "interface",
     "manager",
     "platform",
@@ -105,14 +110,14 @@ class Provider(faker.providers.BaseProvider):
         delimiter = self.random_element(DELIMITERS)
         prefix = self.random_element(PREFIXES)
         suffix = self.random_element(SUFFIXES)
-        noun = self.random_element(SINGAULAR_NOUNS + PLURAL_NOUNS)
-        singular_noun = self.random_element(SINGAULAR_NOUNS)
+        noun = self.random_element(SINGULAR_NOUNS + PLURAL_NOUNS)
+        singular_noun = self.random_element(SINGULAR_NOUNS)
 
         delimiters_weight = 1
         prefixes_weight = 1
         suffixes_weight = len(SUFFIXES)
-        nouns_weight = len(SINGAULAR_NOUNS + PLURAL_NOUNS)
-        singular_nouns_weight = len(SINGAULAR_NOUNS)
+        nouns_weight = len(SINGULAR_NOUNS + PLURAL_NOUNS)
+        singular_nouns_weight = len(SINGULAR_NOUNS)
 
         choices = [
             noun,
