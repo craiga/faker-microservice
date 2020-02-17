@@ -20,14 +20,6 @@ class IntegrationTestCase(unittest.TestCase):
         self.assertIsInstance(result, str)
         self.assertGreater(len(result), 1)
 
-    def test_private_unavailable(self):
-        """Test private method isn't available through Faker."""
-        # pylint: disable=no-member,protected-access
-        with self.assertRaises(AttributeError):
-            self.fake._microservice_simple()
-        with self.assertRaises(AttributeError):
-            self.fake.microservice_simple()
-
 
 class MicroserviceProviderTestCase(unittest.TestCase):
     """Provider test case."""
@@ -50,6 +42,13 @@ class MicroserviceProviderTestCase(unittest.TestCase):
         for this_value in the_list:
             self.assertGreaterEqual(this_value, prev_value)
             prev_value = this_value
+
+    def test_no_duplicates(self):
+        """Test lists in root of module don't contain duplicates."""
+        for attr_name, attr in faker_microservice.__dict__.items():
+            with self.subTest(attr_name=attr_name):
+                if isinstance(attr, list):
+                    self.assertEqual(len(attr), len(set(attr)))
 
 
 if __name__ == "__main__":
