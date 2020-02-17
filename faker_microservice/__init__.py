@@ -84,7 +84,6 @@ DELIMITERS = ["", "-", "_"]
 
 PREFIXES = ["legacy", "new", "old"]
 
-
 SUFFIXES = [
     "adapter",
     "adaptor",
@@ -106,6 +105,19 @@ SUFFIXES = [
     "ui",
 ]
 
+PROPER_NOUNS = [
+    "c3po",
+    "enterprise",
+    "gandalf",
+    "janeway",
+    "kirk",
+    "millenium-falcon",
+    "ncc1702",
+    "picard",
+    "r2d2",
+    "sisko",
+]
+
 
 class Provider(faker.providers.BaseProvider):
     """Provider for Faker which adds fake microservice names."""
@@ -115,13 +127,15 @@ class Provider(faker.providers.BaseProvider):
         delimiter = self.random_element(DELIMITERS)
         prefix = self.random_element(PREFIXES)
         suffix = self.random_element(SUFFIXES)
-        noun = self.random_element(SINGULAR_NOUNS + PLURAL_NOUNS)
+        noun = self.random_element(
+            SINGULAR_NOUNS + PLURAL_NOUNS + PROPER_NOUNS
+        )
         singular_noun = self.random_element(SINGULAR_NOUNS)
 
         delimiters_weight = 1
         prefixes_weight = 1
         suffixes_weight = len(SUFFIXES)
-        nouns_weight = len(SINGULAR_NOUNS + PLURAL_NOUNS)
+        nouns_weight = len(SINGULAR_NOUNS + PLURAL_NOUNS + PROPER_NOUNS)
         singular_nouns_weight = len(SINGULAR_NOUNS)
 
         choices = [
