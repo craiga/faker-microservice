@@ -11,12 +11,15 @@ SINGULAR_NOUNS = [
     "authorisation",
     "azure",
     "bigquery",
+    "blob",
+    "blog",
     "cassandra",
     "cloud",
     "contact",
     "conversion",
     "cosmos",
     "database",
+    "document",
     "dynamo",
     "dynamodb",
     "elastic",
@@ -59,10 +62,12 @@ SINGULAR_NOUNS = [
 ]
 
 PLURAL_NOUNS = [
+    "blogs",
     "clouds",
     "contacts",
     "conversions",
     "databases",
+    "documents",
     "emails",
     "errors",
     "logins",
