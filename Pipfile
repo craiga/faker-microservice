@@ -7,6 +7,7 @@ verify_ssl = true
 isort = "*"
 pylint = "*"
 coverage = "*"
+black = "==19.3b0"
 
 [packages]
 faker-microservice = {editable = true,path = "."}

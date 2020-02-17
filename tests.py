@@ -37,18 +37,6 @@ class MicroserviceProviderTestCase(unittest.TestCase):
     def setUp(self):
         self.provider = faker_microservice.Provider(Generator())
 
-    def test_simple(self):
-        """Test simple microservice names."""
-        result = self.provider._microservice_simple()
-        self.assertIsInstance(result, str)
-        self.assertGreater(len(result), 1)
-
-    def test_delimiter_and_suffix(self):
-        """Test microservice names with delimiter and suffix."""
-        result = self.provider._microservice_with_delimiter_and_suffix()
-        self.assertIsInstance(result, str)
-        self.assertGreater(len(result), 1)
-
     def test_lists_in_order(self):
         """Test lists in root of module are in order."""
         for attr_name, attr in faker_microservice.__dict__.items():
